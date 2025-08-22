@@ -12,8 +12,6 @@ export class InputPage {
     readonly fullName: string;
     readonly originalText: string;
 
-    
-
     constructor(page: Page) {
         this.page = page;
         this.fullNameInput = page.locator('#fullName');
