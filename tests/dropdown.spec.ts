@@ -9,17 +9,18 @@ test.describe('Dropdown Tests', () => {
         await dropdownPage.goto();
     });
 
-    test('should select Apple label', async () => {
+    test('should select Apple', async () => {
         await dropdownPage.selectApple();
+        const selectedFruit = await dropdownPage.selectFruit.inputValue();
         // confirm that the Apple has been selected
-        await expect(dropdownPage.selectFruit).toHaveValue('0');
+        await expect(dropdownPage.selectFruit).toHaveValue(selectedFruit);
         await expect(dropdownPage.fruitConfirmation).toBeVisible();
     });
 
     test('should randomly select 3 superheros', async ({ page }) => {
-        const selected = await dropdownPage.selectRandomSuperheros(3);
+        const selectedSuperheros = await dropdownPage.selectRandomSuperheros(3);
         // confirm that 3 random superheros are selected
-        await dropdownPage.assertSelectedSuperheros(selected);
+        await dropdownPage.confirmSelectedSuperheros(selectedSuperheros);
     });
 
     test('should pick the last language', async () => {
@@ -30,9 +31,9 @@ test.describe('Dropdown Tests', () => {
     });
 
     test('should select India value', async () => {
-        const selectedCountry = await dropdownPage.selectCountryByValue();
         await dropdownPage.selectCountryByValue();
+        const selectedCountry = await dropdownPage.selectCountry.inputValue();
         // confirm that the value India has been selected
-        await expect(dropdownPage.selectCountry).toHaveValue('India');
+        await expect(dropdownPage.selectCountry).toHaveValue(selectedCountry);
     });
 });

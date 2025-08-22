@@ -25,14 +25,14 @@ export class DropdownPage {
         await this.selectFruit.selectOption('Apple');
     }
 
-    async selectSuperHeros(): Promise<string[]> {
+    async selectSuperheros(): Promise<string[]> {
         return this.superheroMultiSelect.locator('option').evaluateAll(options =>
         options.map(o => (o as HTMLOptionElement).value)
         );
     }
 
     async selectRandomSuperheros(count: number): Promise<string[]> {
-        const allValues = await this.selectSuperHeros();
+        const allValues = await this.selectSuperheros();
 
         // Shuffle and slice `count` values
         const shuffle = allValues.sort(() => 0.5 - Math.random());
@@ -48,7 +48,7 @@ export class DropdownPage {
         );
     }
 
-    async assertSelectedSuperheros(expected: string[]) {
+    async confirmSelectedSuperheros(expected: string[]) {
         const selected = await this.getSelectedSuperheroValues();
         expect(selected.sort()).toEqual(expected.sort());
     }

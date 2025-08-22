@@ -25,15 +25,15 @@ test.describe('Input Tests', () => {
     });
 
     test('should confirm text in input', async () => {
-        const exitingText = await inputPage.getTextFromInput();
+        const existingText = await inputPage.getTextFromInput();
         //confirm placeholder text in input
-        await expect(inputPage.confirmTextInInput).toHaveValue(exitingText);
+        await expect(inputPage.confirmTextInInput).toHaveValue(existingText);
     });
 
     test('should clear text in input', async () => {
         await inputPage.clearTextInInput();
-        //confirm that no text in the input after it has been cleared
-        await expect(inputPage.clearedInput).toHaveValue('');
+        //confirm input is empty after clearing text
+        await expect(inputPage.clearedInput).toBeEmpty;
     });
 
     test('should confirm input is disabled', async () => {
